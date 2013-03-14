@@ -1,0 +1,14 @@
+#INSTALL INSTRUCTIONS
+1) Run: sudo mkdir /etc/share/grub/themes (IF DONE SKIP TO TWO.)
+2) Run: sudo cp --recursive ./surface /usr/share/grub/themes
+3) Add the following line to /etc/default/grub:
+   GRUB_THEME=/usr/share/grub/themes/surface/theme.txt
+4) Open /etc/grub.d/10_linux and search for(towards bottom) :
+   echo "submenu '$(gettext_printf "Advanced options for %s" "${OS}" | grub_quote)'
+   Insert the following immediatly after:
+   --class recovery --class repair
+5) Open etc/grub.d/30_uefi-firmware and search for(towards bottom) :
+   menuentry '$LABEL'
+   Insert the following immediatly after:
+   --class secure --class recovery
+6) Run: sudo update-grub
