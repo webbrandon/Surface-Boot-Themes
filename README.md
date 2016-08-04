@@ -22,7 +22,7 @@
 
 6. Make the Windows title and icon for Windows launch.
 
-    Open `/etc/grub.d/25_custom` and you will see the following:
+    If you have run `boot-repair`, open `/etc/grub.d/25_custom` and you will see the following:
     ```
     menuentry "Windows UEFI bkpbootmgfw.efi" { 
       search --fs-uuid --no-floppy --set=root BE36-A896 
@@ -35,5 +35,9 @@
     ```
     Delete one of the menuentry settings then insert `--class windows` after the `"`:<br>
     (note: edit title as desired.)
+    
+    If not, open `/etc/grub.d/30_os-prober` and search for :<br>
+    `'$(echo "${LONGNAME} $onstr" | grub_quote)' --class windows`<br>
+    Replace `${LONGNAME}` to Windows (note: edit title as desired.)
     
 7. Run: `sudo update-grub`
