@@ -1,11 +1,19 @@
 # INSTALL INSTRUCTIONS
 1. Run: `sudo mkdir /usr/share/grub/themes` (IF DONE SKIP TO TWO.)
-2. Run: `sudo cp --recursive ./surface /usr/share/grub/themes`
+2. Run: `sudo cp --recursive ./surface /usr/share/grub/themes` for Surface
+   or `sudo cp --recursive ./surfacebook /usr/share/grub/themes` for Surface Book
 3. Add the following line to `/etc/default/grub`:
 
+   For Surface:
     ```
     GRUB_THEME=/usr/share/grub/themes/surface/theme.txt
     ```
+
+   For Surface Book:
+    ```
+    GRUB_THEME=/usr/share/grub/themes/surfacebook/theme.txt
+    ```
+
 4. Make the repair title and icon for kernel repair.
 
     Open `/etc/grub.d/10_linux` and search for (towards bottom):
